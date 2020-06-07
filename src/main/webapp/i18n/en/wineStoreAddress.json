@@ -1,0 +1,28 @@
+{
+  "storeApp": {
+    "wineStoreAddress": {
+      "home": {
+        "title": "Wine Store Addresses",
+        "createLabel": "Create a new Wine Store Address",
+        "createOrEditLabel": "Create or edit a Wine Store Address",
+        "notFound": "No Wine Store Addresses found"
+      },
+      "created": "A new Wine Store Address is created with identifier {{ param }}",
+      "updated": "A Wine Store Address is updated with identifier {{ param }}",
+      "deleted": "A Wine Store Address is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Wine Store Address {{ id }}?"
+      },
+      "detail": {
+        "title": "Wine Store Address"
+      },
+      "street": "Street",
+      "postcode": "Postcode",
+      "city": "City",
+      "region": "Region",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "wineStore": "Wine Store"
+    }
+  }
+}

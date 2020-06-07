@@ -1,0 +1,28 @@
+{
+  "storeApp": {
+    "wineStoreAddress": {
+      "home": {
+        "title": "Wine Store Addresses",
+        "createLabel": "Създайте нов Wine Store Address",
+        "createOrEditLabel": "Създайте или редактирайте Wine Store Address",
+        "notFound": "Wine Store Addresses не са намерени"
+      },
+      "created": "Създаден е нов Wine Store Address с идентификатор {{ param }}",
+      "updated": "Wine Store Address с идентификатор {{ param }} e oбновен",
+      "deleted": "Wine Store Address с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Wine Store Address {{ id }}?"
+      },
+      "detail": {
+        "title": "Wine Store Address"
+      },
+      "street": "Street",
+      "postcode": "Postcode",
+      "city": "City",
+      "region": "Region",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "wineStore": "Wine Store"
+    }
+  }
+}

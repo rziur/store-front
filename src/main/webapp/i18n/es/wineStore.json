@@ -1,0 +1,24 @@
+{
+  "storeApp": {
+    "wineStore": {
+      "home": {
+        "title": "Wine Stores",
+        "createLabel": "Crear nuevo Wine Store",
+        "createOrEditLabel": "Crear o editar Wine Store",
+        "notFound": "Ningún Wine Stores encontrado"
+      },
+      "created": "Un nuevo Wine Store ha sido creado con el identificador {{ param }}",
+      "updated": "Un Wine Store ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Wine Store ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Wine Store {{ id }}?"
+      },
+      "detail": {
+        "title": "Wine Store"
+      },
+      "name": "Name",
+      "description": "Description",
+      "rating": "Rating"
+    }
+  }
+}

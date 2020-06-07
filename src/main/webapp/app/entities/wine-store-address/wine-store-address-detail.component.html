@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="wineStoreAddress">
+            <h2><span jhiTranslate="storeApp.wineStoreAddress.detail.title">Wine Store Address</span> {{ wineStoreAddress.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="storeApp.wineStoreAddress.street">Street</span></dt>
+                <dd>
+                    <span>{{ wineStoreAddress.street }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStoreAddress.postcode">Postcode</span></dt>
+                <dd>
+                    <span>{{ wineStoreAddress.postcode }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStoreAddress.city">City</span></dt>
+                <dd>
+                    <span>{{ wineStoreAddress.city }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStoreAddress.region">Region</span></dt>
+                <dd>
+                    <span>{{ wineStoreAddress.region }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStoreAddress.latitude">Latitude</span></dt>
+                <dd>
+                    <span>{{ wineStoreAddress.latitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStoreAddress.longitude">Longitude</span></dt>
+                <dd>
+                    <span>{{ wineStoreAddress.longitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStoreAddress.wineStore">Wine Store</span></dt>
+                <dd>
+                    <div *ngIf="wineStoreAddress.wineStoreId">
+                        <a [routerLink]="['/wine-store', wineStoreAddress.wineStoreId, 'view']">{{ wineStoreAddress.wineStoreId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wine-store-address', wineStoreAddress.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
