@@ -1,0 +1,132 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-wine-stock-heading" jhiTranslate="storeApp.wineStock.home.createOrEditLabel">Create or edit a Wine Stock</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.supplier" for="field_supplier">Supplier</label>
+                    <input type="text" class="form-control" name="supplier" id="field_supplier"
+                           formControlName="supplier"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.region" for="field_region">Region</label>
+                    <input type="text" class="form-control" name="region" id="field_region"
+                           formControlName="region"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.vintage" for="field_vintage">Vintage</label>
+                    <input type="text" class="form-control" name="vintage" id="field_vintage"
+                           formControlName="vintage"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.alcoholLevel" for="field_alcoholLevel">Alcohol Level</label>
+                    <input type="number" class="form-control" name="alcoholLevel" id="field_alcoholLevel"
+                           formControlName="alcoholLevel"/>
+                    <div *ngIf="editForm.get('alcoholLevel')!.invalid && (editForm.get('alcoholLevel')!.dirty || editForm.get('alcoholLevel')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('alcoholLevel')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('alcoholLevel')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 90 }">
+                            This field cannot be more than 90.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('alcoholLevel')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.printRun" for="field_printRun">Print Run</label>
+                    <input type="text" class="form-control" name="printRun" id="field_printRun"
+                           formControlName="printRun"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.price" for="field_price">Price</label>
+                    <input type="number" class="form-control" name="price" id="field_price"
+                           formControlName="price"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.physical" for="field_physical">Physical</label>
+                    <input type="number" class="form-control" name="physical" id="field_physical"
+                           formControlName="physical"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.purchases" for="field_purchases">Purchases</label>
+                    <input type="number" class="form-control" name="purchases" id="field_purchases"
+                           formControlName="purchases"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.sales" for="field_sales">Sales</label>
+                    <input type="number" class="form-control" name="sales" id="field_sales"
+                           formControlName="sales"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.availability" for="field_availability">Availability</label>
+                    <input type="number" class="form-control" name="availability" id="field_availability"
+                           formControlName="availability"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.pxRevCol" for="field_pxRevCol">Px Rev Col</label>
+                    <input type="number" class="form-control" name="pxRevCol" id="field_pxRevCol"
+                           formControlName="pxRevCol"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.lastPurchasePrice" for="field_lastPurchasePrice">Last Purchase Price</label>
+                    <input type="number" class="form-control" name="lastPurchasePrice" id="field_lastPurchasePrice"
+                           formControlName="lastPurchasePrice"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.lastPurchaseDate" for="field_lastPurchaseDate">Last Purchase Date</label>
+                    <div class="d-flex">
+                        <input id="field_lastPurchaseDate" type="datetime-local" class="form-control" name="lastPurchaseDate" formControlName="lastPurchaseDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineStock.dateImport" for="field_dateImport">Date Import</label>
+                    <div class="d-flex">
+                        <input id="field_dateImport" type="datetime-local" class="form-control" name="dateImport" formControlName="dateImport" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

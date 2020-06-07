@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-wine-sale-heading" jhiTranslate="storeApp.wineSale.home.createOrEditLabel">Create or edit a Wine Sale</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineSale.shippingDescription" for="field_shippingDescription">Shipping Description</label>
+                    <input type="text" class="form-control" name="shippingDescription" id="field_shippingDescription"
+                           formControlName="shippingDescription"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineSale.shippingAmount" for="field_shippingAmount">Shipping Amount</label>
+                    <input type="number" class="form-control" name="shippingAmount" id="field_shippingAmount"
+                           formControlName="shippingAmount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineSale.discount" for="field_discount">Discount</label>
+                    <input type="number" class="form-control" name="discount" id="field_discount"
+                           formControlName="discount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineSale.total" for="field_total">Total</label>
+                    <input type="number" class="form-control" name="total" id="field_total"
+                           formControlName="total"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineSale.state" for="field_state">State</label>
+                    <input type="number" class="form-control" name="state" id="field_state"
+                           formControlName="state"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineSale.wineCustomer" for="field_wineCustomer">Wine Customer</label>
+                    <select class="form-control" id="field_wineCustomer" name="wineCustomer" formControlName="wineCustomerId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="wineCustomerOption.id" *ngFor="let wineCustomerOption of winecustomers; trackBy: trackById">{{ wineCustomerOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineSale.wineStock" for="field_wineStock">Wine Stock</label>
+                    <select class="form-control" id="field_wineStock" name="wineStock" formControlName="wineStockId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="wineStockOption.id" *ngFor="let wineStockOption of winestocks; trackBy: trackById">{{ wineStockOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.wineSale.wineStore" for="field_wineStore">Wine Store</label>
+                    <select class="form-control" id="field_wineStore" name="wineStore" formControlName="wineStoreId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="wineStoreOption.id" *ngFor="let wineStoreOption of winestores; trackBy: trackById">{{ wineStoreOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

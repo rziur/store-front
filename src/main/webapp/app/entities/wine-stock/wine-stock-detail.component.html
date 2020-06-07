@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="wineStock">
+            <h2><span jhiTranslate="storeApp.wineStock.detail.title">Wine Stock</span> {{ wineStock.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="storeApp.wineStock.supplier">Supplier</span></dt>
+                <dd>
+                    <span>{{ wineStock.supplier }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.region">Region</span></dt>
+                <dd>
+                    <span>{{ wineStock.region }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.description">Description</span></dt>
+                <dd>
+                    <span>{{ wineStock.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.vintage">Vintage</span></dt>
+                <dd>
+                    <span>{{ wineStock.vintage }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.alcoholLevel">Alcohol Level</span></dt>
+                <dd>
+                    <span>{{ wineStock.alcoholLevel }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.printRun">Print Run</span></dt>
+                <dd>
+                    <span>{{ wineStock.printRun }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.price">Price</span></dt>
+                <dd>
+                    <span>{{ wineStock.price }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.physical">Physical</span></dt>
+                <dd>
+                    <span>{{ wineStock.physical }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.purchases">Purchases</span></dt>
+                <dd>
+                    <span>{{ wineStock.purchases }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.sales">Sales</span></dt>
+                <dd>
+                    <span>{{ wineStock.sales }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.availability">Availability</span></dt>
+                <dd>
+                    <span>{{ wineStock.availability }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.pxRevCol">Px Rev Col</span></dt>
+                <dd>
+                    <span>{{ wineStock.pxRevCol }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.lastPurchasePrice">Last Purchase Price</span></dt>
+                <dd>
+                    <span>{{ wineStock.lastPurchasePrice }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.lastPurchaseDate">Last Purchase Date</span></dt>
+                <dd>
+                    <span>{{ wineStock.lastPurchaseDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineStock.dateImport">Date Import</span></dt>
+                <dd>
+                    <span>{{ wineStock.dateImport }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wine-stock', wineStock.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

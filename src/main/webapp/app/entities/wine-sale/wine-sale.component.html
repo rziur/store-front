@@ -1,0 +1,97 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="storeApp.wineSale.home.title">Wine Sales</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-wine-sale" [routerLink]="['/wine-sale/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="storeApp.wineSale.home.createLabel">
+            Create a new Wine Sale
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="wineSales?.length === 0">
+        <span jhiTranslate="storeApp.wineSale.home.notFound">No wineSales found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="wineSales && wineSales.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="shippingDescription"><span jhiTranslate="storeApp.wineSale.shippingDescription">Shipping Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="shippingAmount"><span jhiTranslate="storeApp.wineSale.shippingAmount">Shipping Amount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="discount"><span jhiTranslate="storeApp.wineSale.discount">Discount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="total"><span jhiTranslate="storeApp.wineSale.total">Total</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="state"><span jhiTranslate="storeApp.wineSale.state">State</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="wineCustomerId"><span jhiTranslate="storeApp.wineSale.wineCustomer">Wine Customer</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="wineStockId"><span jhiTranslate="storeApp.wineSale.wineStock">Wine Stock</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="wineStoreId"><span jhiTranslate="storeApp.wineSale.wineStore">Wine Store</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let wineSale of wineSales ;trackBy: trackId">
+                    <td><a [routerLink]="['/wine-sale', wineSale.id, 'view']">{{ wineSale.id }}</a></td>
+                    <td>{{ wineSale.shippingDescription }}</td>
+                    <td>{{ wineSale.shippingAmount }}</td>
+                    <td>{{ wineSale.discount }}</td>
+                    <td>{{ wineSale.total }}</td>
+                    <td>{{ wineSale.state }}</td>
+                    <td>
+                        <div *ngIf="wineSale.wineCustomerId">
+                            <a [routerLink]="['/wine-customer', wineSale.wineCustomerId , 'view']" >{{ wineSale.wineCustomerId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="wineSale.wineStockId">
+                            <a [routerLink]="['/wine-stock', wineSale.wineStockId , 'view']" >{{ wineSale.wineStockId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="wineSale.wineStoreId">
+                            <a [routerLink]="['/wine-store', wineSale.wineStoreId , 'view']" >{{ wineSale.wineStoreId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/wine-sale', wineSale.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/wine-sale', wineSale.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(wineSale)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="wineSales && wineSales.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

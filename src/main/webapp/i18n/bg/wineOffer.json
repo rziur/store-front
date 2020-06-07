@@ -1,0 +1,26 @@
+{
+  "storeApp": {
+    "wineOffer": {
+      "home": {
+        "title": "Wine Offers",
+        "createLabel": "Създайте нов Wine Offer",
+        "createOrEditLabel": "Създайте или редактирайте Wine Offer",
+        "notFound": "Wine Offers не са намерени"
+      },
+      "created": "Създаден е нов Wine Offer с идентификатор {{ param }}",
+      "updated": "Wine Offer с идентификатор {{ param }} e oбновен",
+      "deleted": "Wine Offer с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Wine Offer {{ id }}?"
+      },
+      "detail": {
+        "title": "Wine Offer"
+      },
+      "isAvailable": "Is Available",
+      "price": "Price",
+      "specialPrice": "Special Price",
+      "wineStock": "Wine Stock",
+      "wineStore": "Wine Store"
+    }
+  }
+}

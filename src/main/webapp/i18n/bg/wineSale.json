@@ -1,0 +1,29 @@
+{
+  "storeApp": {
+    "wineSale": {
+      "home": {
+        "title": "Wine Sales",
+        "createLabel": "Създайте нов Wine Sale",
+        "createOrEditLabel": "Създайте или редактирайте Wine Sale",
+        "notFound": "Wine Sales не са намерени"
+      },
+      "created": "Създаден е нов Wine Sale с идентификатор {{ param }}",
+      "updated": "Wine Sale с идентификатор {{ param }} e oбновен",
+      "deleted": "Wine Sale с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Wine Sale {{ id }}?"
+      },
+      "detail": {
+        "title": "Wine Sale"
+      },
+      "shippingDescription": "Shipping Description",
+      "shippingAmount": "Shipping Amount",
+      "discount": "Discount",
+      "total": "Total",
+      "state": "State",
+      "wineCustomer": "Wine Customer",
+      "wineStock": "Wine Stock",
+      "wineStore": "Wine Store"
+    }
+  }
+}

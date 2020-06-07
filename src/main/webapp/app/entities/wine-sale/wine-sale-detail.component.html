@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="wineSale">
+            <h2><span jhiTranslate="storeApp.wineSale.detail.title">Wine Sale</span> {{ wineSale.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="storeApp.wineSale.shippingDescription">Shipping Description</span></dt>
+                <dd>
+                    <span>{{ wineSale.shippingDescription }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineSale.shippingAmount">Shipping Amount</span></dt>
+                <dd>
+                    <span>{{ wineSale.shippingAmount }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineSale.discount">Discount</span></dt>
+                <dd>
+                    <span>{{ wineSale.discount }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineSale.total">Total</span></dt>
+                <dd>
+                    <span>{{ wineSale.total }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineSale.state">State</span></dt>
+                <dd>
+                    <span>{{ wineSale.state }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineSale.wineCustomer">Wine Customer</span></dt>
+                <dd>
+                    <div *ngIf="wineSale.wineCustomerId">
+                        <a [routerLink]="['/wine-customer', wineSale.wineCustomerId, 'view']">{{ wineSale.wineCustomerId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineSale.wineStock">Wine Stock</span></dt>
+                <dd>
+                    <div *ngIf="wineSale.wineStockId">
+                        <a [routerLink]="['/wine-stock', wineSale.wineStockId, 'view']">{{ wineSale.wineStockId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineSale.wineStore">Wine Store</span></dt>
+                <dd>
+                    <div *ngIf="wineSale.wineStoreId">
+                        <a [routerLink]="['/wine-store', wineSale.wineStoreId, 'view']">{{ wineSale.wineStoreId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wine-sale', wineSale.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

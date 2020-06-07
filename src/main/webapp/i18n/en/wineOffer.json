@@ -1,0 +1,26 @@
+{
+  "storeApp": {
+    "wineOffer": {
+      "home": {
+        "title": "Wine Offers",
+        "createLabel": "Create a new Wine Offer",
+        "createOrEditLabel": "Create or edit a Wine Offer",
+        "notFound": "No Wine Offers found"
+      },
+      "created": "A new Wine Offer is created with identifier {{ param }}",
+      "updated": "A Wine Offer is updated with identifier {{ param }}",
+      "deleted": "A Wine Offer is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Wine Offer {{ id }}?"
+      },
+      "detail": {
+        "title": "Wine Offer"
+      },
+      "isAvailable": "Is Available",
+      "price": "Price",
+      "specialPrice": "Special Price",
+      "wineStock": "Wine Stock",
+      "wineStore": "Wine Store"
+    }
+  }
+}

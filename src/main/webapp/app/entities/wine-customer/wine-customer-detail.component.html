@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="wineCustomer">
+            <h2><span jhiTranslate="storeApp.wineCustomer.detail.title">Wine Customer</span> {{ wineCustomer.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="storeApp.wineCustomer.address">Address</span></dt>
+                <dd>
+                    <span>{{ wineCustomer.address }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineCustomer.phone">Phone</span></dt>
+                <dd>
+                    <span>{{ wineCustomer.phone }}</span>
+                </dd>
+                <dt><span jhiTranslate="storeApp.wineCustomer.user">User</span></dt>
+                <dd>
+                    {{ wineCustomer.userLogin }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wine-customer', wineCustomer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

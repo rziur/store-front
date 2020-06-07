@@ -1,0 +1,29 @@
+{
+  "storeApp": {
+    "wineSale": {
+      "home": {
+        "title": "Wine Sales",
+        "createLabel": "Crear nuevo Wine Sale",
+        "createOrEditLabel": "Crear o editar Wine Sale",
+        "notFound": "Ningún Wine Sales encontrado"
+      },
+      "created": "Un nuevo Wine Sale ha sido creado con el identificador {{ param }}",
+      "updated": "Un Wine Sale ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Wine Sale ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Wine Sale {{ id }}?"
+      },
+      "detail": {
+        "title": "Wine Sale"
+      },
+      "shippingDescription": "Shipping Description",
+      "shippingAmount": "Shipping Amount",
+      "discount": "Discount",
+      "total": "Total",
+      "state": "State",
+      "wineCustomer": "Wine Customer",
+      "wineStock": "Wine Stock",
+      "wineStore": "Wine Store"
+    }
+  }
+}

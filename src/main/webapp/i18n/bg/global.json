@@ -9,6 +9,10 @@
         "main": "Обекти",
         "wineStore": "Wine Store",
         "wineStoreAddress": "Wine Store Address",
+        "wineStock": "Wine Stock",
+        "wineOffer": "Wine Offer",
+        "wineSale": "Wine Sale",
+        "wineCustomer": "Wine Customer",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,99 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="storeApp.wineStock.home.title">Wine Stocks</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-wine-stock" [routerLink]="['/wine-stock/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="storeApp.wineStock.home.createLabel">
+            Create a new Wine Stock
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="wineStocks?.length === 0">
+        <span jhiTranslate="storeApp.wineStock.home.notFound">No wineStocks found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="wineStocks && wineStocks.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="supplier"><span jhiTranslate="storeApp.wineStock.supplier">Supplier</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="region"><span jhiTranslate="storeApp.wineStock.region">Region</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="storeApp.wineStock.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="vintage"><span jhiTranslate="storeApp.wineStock.vintage">Vintage</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="alcoholLevel"><span jhiTranslate="storeApp.wineStock.alcoholLevel">Alcohol Level</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="printRun"><span jhiTranslate="storeApp.wineStock.printRun">Print Run</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="price"><span jhiTranslate="storeApp.wineStock.price">Price</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="physical"><span jhiTranslate="storeApp.wineStock.physical">Physical</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="purchases"><span jhiTranslate="storeApp.wineStock.purchases">Purchases</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sales"><span jhiTranslate="storeApp.wineStock.sales">Sales</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="availability"><span jhiTranslate="storeApp.wineStock.availability">Availability</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="pxRevCol"><span jhiTranslate="storeApp.wineStock.pxRevCol">Px Rev Col</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastPurchasePrice"><span jhiTranslate="storeApp.wineStock.lastPurchasePrice">Last Purchase Price</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastPurchaseDate"><span jhiTranslate="storeApp.wineStock.lastPurchaseDate">Last Purchase Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateImport"><span jhiTranslate="storeApp.wineStock.dateImport">Date Import</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let wineStock of wineStocks ;trackBy: trackId">
+                    <td><a [routerLink]="['/wine-stock', wineStock.id, 'view']">{{ wineStock.id }}</a></td>
+                    <td>{{ wineStock.supplier }}</td>
+                    <td>{{ wineStock.region }}</td>
+                    <td>{{ wineStock.description }}</td>
+                    <td>{{ wineStock.vintage }}</td>
+                    <td>{{ wineStock.alcoholLevel }}</td>
+                    <td>{{ wineStock.printRun }}</td>
+                    <td>{{ wineStock.price }}</td>
+                    <td>{{ wineStock.physical }}</td>
+                    <td>{{ wineStock.purchases }}</td>
+                    <td>{{ wineStock.sales }}</td>
+                    <td>{{ wineStock.availability }}</td>
+                    <td>{{ wineStock.pxRevCol }}</td>
+                    <td>{{ wineStock.lastPurchasePrice }}</td>
+                    <td>{{ wineStock.lastPurchaseDate | date:'medium' }}</td>
+                    <td>{{ wineStock.dateImport | date:'medium' }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/wine-stock', wineStock.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/wine-stock', wineStock.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(wineStock)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="wineStocks && wineStocks.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

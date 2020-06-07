@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="storeApp.wineOffer.home.title">Wine Offers</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-wine-offer" [routerLink]="['/wine-offer/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="storeApp.wineOffer.home.createLabel">
+            Create a new Wine Offer
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="wineOffers?.length === 0">
+        <span jhiTranslate="storeApp.wineOffer.home.notFound">No wineOffers found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="wineOffers && wineOffers.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="isAvailable"><span jhiTranslate="storeApp.wineOffer.isAvailable">Is Available</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="price"><span jhiTranslate="storeApp.wineOffer.price">Price</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="specialPrice"><span jhiTranslate="storeApp.wineOffer.specialPrice">Special Price</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="wineStockId"><span jhiTranslate="storeApp.wineOffer.wineStock">Wine Stock</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="wineStoreId"><span jhiTranslate="storeApp.wineOffer.wineStore">Wine Store</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let wineOffer of wineOffers ;trackBy: trackId">
+                    <td><a [routerLink]="['/wine-offer', wineOffer.id, 'view']">{{ wineOffer.id }}</a></td>
+                    <td>{{ wineOffer.isAvailable }}</td>
+                    <td>{{ wineOffer.price }}</td>
+                    <td>{{ wineOffer.specialPrice }}</td>
+                    <td>
+                        <div *ngIf="wineOffer.wineStockId">
+                            <a [routerLink]="['/wine-stock', wineOffer.wineStockId , 'view']" >{{ wineOffer.wineStockId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="wineOffer.wineStoreId">
+                            <a [routerLink]="['/wine-store', wineOffer.wineStoreId , 'view']" >{{ wineOffer.wineStoreId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/wine-offer', wineOffer.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/wine-offer', wineOffer.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(wineOffer)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="wineOffers && wineOffers.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+{
+  "storeApp": {
+    "wineStock": {
+      "home": {
+        "title": "Wine Stocks",
+        "createLabel": "Crear nuevo Wine Stock",
+        "createOrEditLabel": "Crear o editar Wine Stock",
+        "notFound": "Ningún Wine Stocks encontrado"
+      },
+      "created": "Un nuevo Wine Stock ha sido creado con el identificador {{ param }}",
+      "updated": "Un Wine Stock ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Wine Stock ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Wine Stock {{ id }}?"
+      },
+      "detail": {
+        "title": "Wine Stock"
+      },
+      "supplier": "Supplier",
+      "region": "Region",
+      "description": "Description",
+      "vintage": "Vintage",
+      "alcoholLevel": "Alcohol Level",
+      "printRun": "Print Run",
+      "price": "Price",
+      "physical": "Physical",
+      "purchases": "Purchases",
+      "sales": "Sales",
+      "availability": "Availability",
+      "pxRevCol": "Px Rev Col",
+      "lastPurchasePrice": "Last Purchase Price",
+      "lastPurchaseDate": "Last Purchase Date",
+      "dateImport": "Date Import"
+    }
+  }
+}
