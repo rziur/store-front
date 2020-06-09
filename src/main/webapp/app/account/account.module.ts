@@ -5,6 +5,7 @@ import { StoreSharedModule } from 'app/shared/shared.module';
 
 import { PasswordStrengthBarComponent } from './password/password-strength-bar.component';
 import { RegisterComponent } from './register/register.component';
+import { RegisterCustomerComponent } from './register-customer/register-customer.component';
 import { ActivateComponent } from './activate/activate.component';
 import { PasswordComponent } from './password/password.component';
 import { PasswordResetInitComponent } from './password-reset/init/password-reset-init.component';
@@ -17,6 +18,7 @@ import { accountState } from './account.route';
   declarations: [
     ActivateComponent,
     RegisterComponent,
+    RegisterCustomerComponent,
     PasswordComponent,
     PasswordStrengthBarComponent,
     PasswordResetInitComponent,
