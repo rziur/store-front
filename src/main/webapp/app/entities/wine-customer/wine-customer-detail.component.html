@@ -8,6 +8,41 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
+
+                <dt><span jhiTranslate="storeApp.wineCustomer.user">User</span></dt>
+                <dd>
+                    <span>{{ wineCustomer.login }}</span>
+                    <jhi-boolean
+                        [value]="wineCustomer.activated ? true : false"
+                        [textTrue]="'userManagement.activated' | translate"
+                        [textFalse]="'userManagement.deactivated' | translate">
+                    </jhi-boolean>
+                </dd>
+
+                <dt><span jhiTranslate="userManagement.firstName">First Name</span></dt>
+                <dd>{{ wineCustomer.firstName }}</dd>
+
+                <dt><span jhiTranslate="userManagement.lastName">Last Name</span></dt>
+                <dd>{{ wineCustomer.lastName }}</dd>
+
+                <dt><span jhiTranslate="userManagement.email">Email</span></dt>
+                <dd>{{ wineCustomer.email }}</dd>
+
+                <dt><span jhiTranslate="userManagement.langKey">Lang Key</span></dt>
+                <dd>{{ wineCustomer.langKey }}</dd>
+
+                <dt><span jhiTranslate="userManagement.createdBy">Created By</span></dt>
+                <dd>{{ wineCustomer.createdBy }}</dd>
+
+                <dt><span jhiTranslate="userManagement.createdDate">Created Date</span></dt>
+                <dd>{{ wineCustomer.createdDate | date:'dd/MM/yy HH:mm' }}</dd>
+
+                <dt><span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span></dt>
+                <dd>{{ wineCustomer.lastModifiedBy }}</dd>
+
+                <dt><span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>{{ wineCustomer.lastModifiedDate | date:'dd/MM/yy HH:mm' }}</dd>
+
                 <dt><span jhiTranslate="storeApp.wineCustomer.address">Address</span></dt>
                 <dd>
                     <span>{{ wineCustomer.address }}</span>
@@ -15,10 +50,6 @@
                 <dt><span jhiTranslate="storeApp.wineCustomer.phone">Phone</span></dt>
                 <dd>
                     <span>{{ wineCustomer.phone }}</span>
-                </dd>
-                <dt><span jhiTranslate="storeApp.wineCustomer.user">User</span></dt>
-                <dd>
-                    {{ wineCustomer.login }}
                 </dd>
             </dl>
 
