@@ -79,6 +79,10 @@ export class WineCustomerComponent implements OnInit, OnDestroy {
     return item.id!;
   }
 
+  setActive(user: IWineCustomer, isActivated: boolean): void {
+    this.wineCustomerService.update({ ...user, activated: isActivated }).subscribe(() => this.loadPage());
+  }
+
   registerChangeInWineCustomers(): void {
     this.eventSubscriber = this.eventManager.subscribe('wineCustomerListModification', () => this.loadPage());
   }

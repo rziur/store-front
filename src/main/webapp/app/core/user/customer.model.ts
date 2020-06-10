@@ -7,7 +7,6 @@ export interface ICustomer {
   email?: string;
   activated?: boolean;
   langKey?: string;
-  authorities?: string[];
   createdBy?: string;
   createdDate?: Date;
   lastModifiedBy?: string;
@@ -26,7 +25,6 @@ export class Customer implements ICustomer {
     public email?: string,
     public activated?: boolean,
     public langKey?: string,
-    public authorities?: string[],
     public createdBy?: string,
     public createdDate?: Date,
     public lastModifiedBy?: string,

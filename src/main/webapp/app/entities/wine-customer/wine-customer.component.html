@@ -23,20 +23,38 @@
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="login"><span jhiTranslate="storeApp.wineCustomer.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email"><span jhiTranslate="userManagement.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                    <th scope="col"  jhiSortBy="langKey"> <span jhiTranslate="userManagement.langKey">Lang Key</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col" jhiSortBy="createdDate"><span jhiTranslate="userManagement.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col" jhiSortBy="lastModifiedBy"><span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col" jhiSortBy="lastModifiedDate"><span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="address"><span jhiTranslate="storeApp.wineCustomer.address">Address</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="phone"><span jhiTranslate="storeApp.wineCustomer.phone">Phone</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="userLogin"><span jhiTranslate="storeApp.wineCustomer.user">User</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let wineCustomer of wineCustomers ;trackBy: trackId">
                     <td><a [routerLink]="['/wine-customer', wineCustomer.id, 'view']">{{ wineCustomer.id }}</a></td>
+                    <td>
+                        {{ wineCustomer.login }}
+                    </td>
+                    <td>{{ wineCustomer.email }}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" (click)="setActive(wineCustomer, true)" *ngIf="!wineCustomer.activated"
+                                jhiTranslate="userManagement.deactivated">Deactivated</button>
+                        <button class="btn btn-success btn-sm" (click)="setActive(wineCustomer, false)" *ngIf="wineCustomer.activated"
+                                jhiTranslate="userManagement.activated">Activated</button>
+                    </td>
+                    <td>{{ wineCustomer.langKey }}</td>
+                    <td>{{ wineCustomer.createdDate | date:'dd/MM/yy HH:mm' }}</td>
+                    <td>{{ wineCustomer.lastModifiedBy }}</td>
+                    <td>{{ wineCustomer.lastModifiedDate | date:'dd/MM/yy HH:mm' }}</td>
+
                     <td>{{ wineCustomer.address }}</td>
                     <td>{{ wineCustomer.phone }}</td>
-                    <td>
-                        {{ wineCustomer.userLogin }}
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
