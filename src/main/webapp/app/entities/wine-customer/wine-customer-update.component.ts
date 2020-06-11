@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
+import { LANGUAGES } from 'app/core/language/language.constants';
 import { IWineCustomer, WineCustomer } from 'app/shared/model/wine-customer.model';
 import { WineCustomerService } from './wine-customer.service';
 import { IUser } from 'app/core/user/user.model';
@@ -17,9 +18,24 @@ import { UserService } from 'app/core/user/user.service';
 export class WineCustomerUpdateComponent implements OnInit {
   isSaving = false;
   users: IUser[] = [];
-
+  languages = LANGUAGES;
+  
   editForm = this.fb.group({
     id: [],
+    login: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(50),
+        Validators.pattern('^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$'),
+      ],
+    ],
+    firstName: ['', [Validators.maxLength(50)]],
+    lastName: ['', [Validators.maxLength(50)]],
+    email: ['', [Validators.minLength(5), Validators.maxLength(254), Validators.email]],
+    activated: [],
+    langKey: [],
     address: [],
     phone: [],
     userId: [],
@@ -43,6 +59,12 @@ export class WineCustomerUpdateComponent implements OnInit {
   updateForm(wineCustomer: IWineCustomer): void {
     this.editForm.patchValue({
       id: wineCustomer.id,
+      login: wineCustomer.login,
+      firstName: wineCustomer.firstName,
+      lastName: wineCustomer.lastName,
+      email: wineCustomer.email,
+      activated: wineCustomer.activated,
+      langKey: wineCustomer.langKey,
       address: wineCustomer.address,
       phone: wineCustomer.phone,
       userId: wineCustomer.userId,
@@ -70,6 +92,13 @@ export class WineCustomerUpdateComponent implements OnInit {
       address: this.editForm.get(['address'])!.value,
       phone: this.editForm.get(['phone'])!.value,
       userId: this.editForm.get(['userId'])!.value,
+      login: this.editForm.get(['login'])!.value,
+      firstName: this.editForm.get(['firstName'])!.value,
+      lastName: this.editForm.get(['lastName'])!.value,
+      email: this.editForm.get(['email'])!.value,
+      activated: this.editForm.get(['activated'])!.value,
+      langKey: this.editForm.get(['langKey'])!.value
+ 
     };
   }
 
