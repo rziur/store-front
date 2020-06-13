@@ -52,10 +52,10 @@ export const wineOfferRoute: Routes = [
       wineOffer: WineOfferResolve,
     },
     data: {
-      authorities: [Authority.USER],
+//      authorities: [Authority.USER],
       pageTitle: 'storeApp.wineOffer.home.title',
-    },
-    canActivate: [UserRouteAccessService],
+    }
+  
   },
   {
     path: 'new',

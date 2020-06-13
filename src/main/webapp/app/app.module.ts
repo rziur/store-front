@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import './vendor';
 import { StoreSharedModule } from 'app/shared/shared.module';
@@ -24,6 +25,7 @@ import { ErrorComponent } from './layouts/error/error.component';
     // jhipster-needle-angular-add-module JHipster will add new module here
     StoreEntityModule,
     StoreAppRoutingModule,
+    NgbModule,
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent],
