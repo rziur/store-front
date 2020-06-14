@@ -39,7 +39,7 @@ export const wineOfferRoute: Routes = [
     path: '',
     component: WineOfferComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.USER,Authority.ADMIN],
       defaultSort: 'id,asc',
       pageTitle: 'storeApp.wineOffer.home.title',
     },
@@ -52,7 +52,7 @@ export const wineOfferRoute: Routes = [
       wineOffer: WineOfferResolve,
     },
     data: {
-//      authorities: [Authority.USER],
+      authorities: [Authority.USER,Authority.ADMIN],
       pageTitle: 'storeApp.wineOffer.home.title',
     }
   
@@ -64,7 +64,7 @@ export const wineOfferRoute: Routes = [
       wineOffer: WineOfferResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.USER,Authority.ADMIN],
       pageTitle: 'storeApp.wineOffer.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +76,7 @@ export const wineOfferRoute: Routes = [
       wineOffer: WineOfferResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.USER,Authority.ADMIN],
       pageTitle: 'storeApp.wineOffer.home.title',
     },
     canActivate: [UserRouteAccessService],
