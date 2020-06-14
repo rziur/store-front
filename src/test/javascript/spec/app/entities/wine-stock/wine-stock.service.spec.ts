@@ -40,7 +40,9 @@ describe('Service Tests', () => {
         0,
         0,
         currentDate,
-        currentDate
+        currentDate,
+        'AAAAAAA',
+        0
       );
     });
 
@@ -104,6 +106,8 @@ describe('Service Tests', () => {
             lastPurchasePrice: 1,
             lastPurchaseDate: currentDate.format(DATE_TIME_FORMAT),
             dateImport: currentDate.format(DATE_TIME_FORMAT),
+            imageUrl: 'BBBBBB',
+            rating: 1,
           },
           elemDefault
         );
@@ -141,6 +145,8 @@ describe('Service Tests', () => {
             lastPurchasePrice: 1,
             lastPurchaseDate: currentDate.format(DATE_TIME_FORMAT),
             dateImport: currentDate.format(DATE_TIME_FORMAT),
+            imageUrl: 'BBBBBB',
+            rating: 1,
           },
           elemDefault
         );

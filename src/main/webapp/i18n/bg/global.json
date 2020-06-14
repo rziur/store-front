@@ -23,7 +23,7 @@
         "login": "Вход",
         "logout": "Изход",
         "register": "Регистрация",
-        "register-customer": "Crear una cuenta"        
+        "register-customer": "Crear una cuenta"
       },
       "admin": {
         "main": "Администрация",

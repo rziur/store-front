@@ -30,7 +30,9 @@
       "pxRevCol": "Px Rev Col",
       "lastPurchasePrice": "Last Purchase Price",
       "lastPurchaseDate": "Last Purchase Date",
-      "dateImport": "Date Import"
+      "dateImport": "Date Import",
+      "imageUrl": "Image Url",
+      "rating": "Rating"
     }
   }
 }

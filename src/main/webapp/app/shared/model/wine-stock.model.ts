@@ -17,6 +17,8 @@ export interface IWineStock {
   lastPurchasePrice?: number;
   lastPurchaseDate?: Moment;
   dateImport?: Moment;
+  imageUrl?: string;
+  rating?: number;
 }
 
 export class WineStock implements IWineStock {
@@ -36,6 +38,8 @@ export class WineStock implements IWineStock {
     public pxRevCol?: number,
     public lastPurchasePrice?: number,
     public lastPurchaseDate?: Moment,
-    public dateImport?: Moment
+    public dateImport?: Moment,
+    public imageUrl?: string,
+    public rating?: number
   ) {}
 }

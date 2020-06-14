@@ -34,6 +34,8 @@ export class WineStockUpdateComponent implements OnInit {
     lastPurchasePrice: [],
     lastPurchaseDate: [],
     dateImport: [],
+    imageUrl: [],
+    rating: [null, [Validators.min(1), Validators.max(5)]],
   });
 
   constructor(protected wineStockService: WineStockService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -68,6 +70,8 @@ export class WineStockUpdateComponent implements OnInit {
       lastPurchasePrice: wineStock.lastPurchasePrice,
       lastPurchaseDate: wineStock.lastPurchaseDate ? wineStock.lastPurchaseDate.format(DATE_TIME_FORMAT) : null,
       dateImport: wineStock.dateImport ? wineStock.dateImport.format(DATE_TIME_FORMAT) : null,
+      imageUrl: wineStock.imageUrl,
+      rating: wineStock.rating,
     });
   }
 
@@ -106,6 +110,8 @@ export class WineStockUpdateComponent implements OnInit {
         ? moment(this.editForm.get(['lastPurchaseDate'])!.value, DATE_TIME_FORMAT)
         : undefined,
       dateImport: this.editForm.get(['dateImport'])!.value ? moment(this.editForm.get(['dateImport'])!.value, DATE_TIME_FORMAT) : undefined,
+      imageUrl: this.editForm.get(['imageUrl'])!.value,
+      rating: this.editForm.get(['rating'])!.value,
     };
   }
 

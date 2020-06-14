@@ -38,6 +38,8 @@
                     <th scope="col"  jhiSortBy="lastPurchasePrice"><span jhiTranslate="storeApp.wineStock.lastPurchasePrice">Last Purchase Price</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="lastPurchaseDate"><span jhiTranslate="storeApp.wineStock.lastPurchaseDate">Last Purchase Date</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="dateImport"><span jhiTranslate="storeApp.wineStock.dateImport">Date Import</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="imageUrl"><span jhiTranslate="storeApp.wineStock.imageUrl">Image Url</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="rating"><span jhiTranslate="storeApp.wineStock.rating">Rating</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -59,6 +61,8 @@
                     <td>{{ wineStock.lastPurchasePrice }}</td>
                     <td>{{ wineStock.lastPurchaseDate | date:'medium' }}</td>
                     <td>{{ wineStock.dateImport | date:'medium' }}</td>
+                    <td>{{ wineStock.imageUrl }}</td>
+                    <td>{{ wineStock.rating }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
