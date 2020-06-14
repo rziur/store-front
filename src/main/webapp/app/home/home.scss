@@ -32,7 +32,8 @@ ngb-carousel img {
   outline: none;
 }
 
-/*ngb-carousel {
+/*
+ngb-carousel {
   width: inherit;
   height: inherit;
 }*/
@@ -67,3 +68,47 @@ ngb-carousel img {
 .carousel-indicators{
   z-index: 20;
 }
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  color: #d3d3d3;
+}
+.full {
+  color: yellow;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: yellow;
+}
+
+
+.other-product-wrapper {
+  display: flex !important;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.other-products-availables-inner {
+  margin: 15px;
+}
+
+.other-products-availables-inner img {
+  width: 420px;
+  height: 420px; 
+}
+
+.brandon16 {
+  font-weight: 400;
+  margin: 5px 0;
+}
+
+.brandon18 {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+

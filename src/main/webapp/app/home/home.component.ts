@@ -2,12 +2,13 @@ import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { Subscription, combineLatest } from 'rxjs';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, ParamMap, Router, Data } from '@angular/router';
+import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/user/account.model';
 
-import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
+import { ITEMS_PER_PAGE_OFFER_HOME } from 'app/shared/constants/pagination.constants';
 import { IWineOffer } from '../shared/model/wine-offer.model';
 import { WineOfferService } from '../entities/wine-offer/wine-offer.service';
 import { JhiEventManager } from 'ng-jhipster';
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   wineOffers?: IWineOffer[];
   eventSubscriber?: Subscription;
   totalItems = 0;
-  itemsPerPage = ITEMS_PER_PAGE;
+  itemsPerPage = ITEMS_PER_PAGE_OFFER_HOME;
   page!: number;
   predicate!: string;
   ascending!: boolean;
@@ -36,8 +37,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     private wineOfferService: WineOfferService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private eventManager: JhiEventManager
-    ) {}
+    private eventManager: JhiEventManager,
+    config: NgbRatingConfig
+    ) {
+
+      config.max = 5;
+      config.readonly = true;
+    }
 
   loadPage(page?: number, dontNavigate?: boolean): void {
       const pageToLoad: number = page || this.page || 1;
@@ -92,7 +98,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.totalItems = Number(headers.get('X-Total-Count'));
     this.page = page;
     if (navigate) {
-      this.router.navigate(['/wine-offer'], {
+      this.router.navigate([''], {
         queryParams: {
           page: this.page,
           size: this.itemsPerPage,

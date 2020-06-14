@@ -32,7 +32,9 @@
       "lastPurchaseDate": "Last Purchase Date",
       "dateImport": "Date Import",
       "imageUrl": "Image Url",
-      "rating": "Rating"
+      "rating": "Rating",
+      "name": "Name",
+      "voteCount": "Vote Count"
     }
   }
 }

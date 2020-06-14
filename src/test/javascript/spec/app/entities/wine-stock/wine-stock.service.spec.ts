@@ -42,6 +42,8 @@ describe('Service Tests', () => {
         currentDate,
         currentDate,
         'AAAAAAA',
+        0,
+        'AAAAAAA',
         0
       );
     });
@@ -108,6 +110,8 @@ describe('Service Tests', () => {
             dateImport: currentDate.format(DATE_TIME_FORMAT),
             imageUrl: 'BBBBBB',
             rating: 1,
+            name: 'BBBBBB',
+            voteCount: 1,
           },
           elemDefault
         );
@@ -147,6 +151,8 @@ describe('Service Tests', () => {
             dateImport: currentDate.format(DATE_TIME_FORMAT),
             imageUrl: 'BBBBBB',
             rating: 1,
+            name: 'BBBBBB',
+            voteCount: 1,
           },
           elemDefault
         );

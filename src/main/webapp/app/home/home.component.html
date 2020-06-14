@@ -1,135 +1,214 @@
 <div class="row">
-    <div class="rounded col-md-12">
-        <ngb-carousel
-        [showNavigationArrows]="true" 
-        [showNavigationIndicators]="true"
-        [interval]="12000"
-        [keyboard]="true"
-        [pauseOnHover]="true"
-        [wrap]="true"
-        [activeId]="'secondSlide'"
-        >
-            <ng-template ngbSlide>
-              <div class="picsum-img-wrapper">
-                <img src="../../content/images/1.jpg" alt="">
-              </div>
-              <div class="carousel-caption">
-                <h3>Title Goes Here</h3>
-                <p>Consectetur tortor volutpat pretium.</p>
-              </div>
-            </ng-template>
-            <ng-template ngbSlide>
-              <div class="picsum-img-wrapper">
-                <img src="../../content/images/2.jpg" alt="">
-              </div>
-              <div class="carousel-caption">
-                <h3>Title Goes Here</h3>
-                <p>Consectetur tortor volutpat pretium.</p>
-              </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <div class="picsum-img-wrapper">
-                  <img src="../../content/images/3.jpg" alt="">
-                </div>
-                <div class="carousel-caption">
-                  <h3>Title Goes Here</h3>
-                  <p>Consectetur tortor volutpat pretium.</p>
-                </div>
-              </ng-template>
-              <ng-template ngbSlide>
-                <div class="picsum-img-wrapper">
-                  <img src="../../content/images/4.jpg" alt="">
-                </div>
-                <div class="carousel-caption">
-                  <h3>Title Goes Here</h3>
-                  <p>Consectetur tortor volutpat pretium.</p>
-                </div>
-              </ng-template>
-          </ngb-carousel>
-        
-    </div>
+  <div class="rounded col-md-12">
+    <ngb-carousel [showNavigationArrows]="true" [showNavigationIndicators]="true" [interval]="12000" [keyboard]="true"
+      [pauseOnHover]="true" [wrap]="true" [activeId]="'secondSlide'">
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="../../content/images/1.jpg" alt="">
+        </div>
+        <div class="carousel-caption">
+          <h3>Title Goes Here</h3>
+          <p>Consectetur tortor volutpat pretium.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="../../content/images/2.jpg" alt="">
+        </div>
+        <div class="carousel-caption">
+          <h3>Title Goes Here</h3>
+          <p>Consectetur tortor volutpat pretium.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="../../content/images/3.jpg" alt="">
+        </div>
+        <div class="carousel-caption">
+          <h3>Title Goes Here</h3>
+          <p>Consectetur tortor volutpat pretium.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="../../content/images/4.jpg" alt="">
+        </div>
+        <div class="carousel-caption">
+          <h3>Title Goes Here</h3>
+          <p>Consectetur tortor volutpat pretium.</p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+
+  </div>
 </div>
 
 <div class="row">
-      <div class="col-md-4" *ngFor="let wineOffer of wineOffers ;trackBy: trackId">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title d-flex justify-content-between align-items-center">
-                  {{wineOffer.price}} 
-               </h4>
-                <p>{{wineOffer.price}}</p>
-                <p>{{wineOffer.price}}</p>  
-            </div>
+  <div class="col-md-12 text-center py-5">
+    <b>
+      <h1 jhiTranslate="home.title">MÁS VENDIDOS</h1>
+    </b>
+    <h2 jhiTranslate="home.subtitle">Los 100 primeros vinos de nuestro Top Ventas</h2>
+  </div>
+</div>
+
+<div class="row">
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="wineOffers?.length === 0">
+    <span jhiTranslate="storeApp.wineOffer.home.notFound">No wineOffers found</span>
+  </div>
+
+  <div class="col-md-4 py-2" *ngFor="let wineOffer of wineOffers ;trackBy: trackId">
+    <div class="card">
+      <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        <p>{{wineOffer.wineStockRegion}}</p>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6 align-baseline">
+            <img [src]="wineOffer.wineStockImageUrl" width="125" height="228" alt="" typeof="foaf:Image">
+          </div>
+          <div class="col-md-6 text-justify">
+            <p>{{wineOffer.wineStockRegion}}</p>
+            <h4>
+              {{wineOffer.wineStockDescription}}
+            </h4>
+          </div>
+        </div>
+        <hr>
+        <div class="row text-left">
+          <div class="col-md-4">
+            <h3>
+              <b>
+                <p>{{wineOffer.specialPrice}}&nbsp;€</p>
+              </b>
+            </h3>
+          </div>
+          <div class="col-md-8">
+            <h5>
+              <p>{{wineOffer.price}}&nbsp;€</p>
+            </h5>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+
+            <ng-template #t let-fill="fill">
+              <span class="star" [class.full]="fill === 100">
+                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+              </span>
+            </ng-template>
+
+            <ngb-rating [rate]="wineOffer.wineStockRating" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+
+            <hr>
+            <pre>Rate: <b>{{wineOffer.wineStockVoteCount}}</b></pre>
+
+          </div>
         </div>
       </div>
+    </div>
+  </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
-            <h2 id="page-heading">
-                <span jhiTranslate="storeApp.wineOffer.home.title">Wine Offers</span>
-                </h2>
-        
-            <jhi-alert-error></jhi-alert-error>
-        
-            <jhi-alert></jhi-alert>
-        
-            <div class="alert alert-warning" id="no-result" *ngIf="wineOffers?.length === 0">
-                <span jhiTranslate="storeApp.wineOffer.home.notFound">No wineOffers found</span>
-            </div>
-      
-            <div class="table-responsive" id="entities" *ngIf="wineOffers && wineOffers.length > 0">
-                <table class="table table-striped" aria-describedby="page-heading">
-                    <thead>
-                        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                            <th scope="col"  jhiSortBy="isAvailable"><span jhiTranslate="storeApp.wineOffer.isAvailable">Is Available</span> <fa-icon icon="sort"></fa-icon></th>
-                            <th scope="col"  jhiSortBy="price"><span jhiTranslate="storeApp.wineOffer.price">Price</span> <fa-icon icon="sort"></fa-icon></th>
-                            <th scope="col"  jhiSortBy="specialPrice"><span jhiTranslate="storeApp.wineOffer.specialPrice">Special Price</span> <fa-icon icon="sort"></fa-icon></th>
-                            <th scope="col"  jhiSortBy="wineStockId"><span jhiTranslate="storeApp.wineOffer.wineStock">Wine Stock</span> <fa-icon icon="sort"></fa-icon></th>
-                            <th scope="col"  jhiSortBy="wineStoreId"><span jhiTranslate="storeApp.wineOffer.wineStore">Wine Store</span> <fa-icon icon="sort"></fa-icon></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let wineOffer of wineOffers ;trackBy: trackId">
-                            <td><a [routerLink]="['/wine-offer', wineOffer.id, 'view']">{{ wineOffer.id }}</a></td>
-                            <td>{{ wineOffer.isAvailable }}</td>
-                            <td>{{ wineOffer.price }}</td>
-                            <td>{{ wineOffer.specialPrice }}</td>
-                            <td>
-                                <div *ngIf="wineOffer.wineStockId">
-                                    <a [routerLink]="['/wine-stock', wineOffer.wineStockId , 'view']" >{{ wineOffer.wineStockId }}</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div *ngIf="wineOffer.wineStoreId">
-                                    <a [routerLink]="['/wine-store', wineOffer.wineStoreId , 'view']" >{{ wineOffer.wineStoreId }}</a>
-                                </div>
-                            </td>
-                            <td class="text-right">
-                                <div class="btn-group">
-                                    <button type="submit"
-                                            [routerLink]="['/wine-offer', wineOffer.id, 'view']"
-                                            class="btn btn-info btn-sm">
-                                        <fa-icon icon="eye"></fa-icon>
-                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        
-            <div *ngIf="wineOffers && wineOffers.length > 0">
-                <div class="row justify-content-center">
-                    <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-                </div>
-        
-                <div class="row justify-content-center">
-                    <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
-                </div>
-            </div>
+  <div class="col-md-12 text-center py-2">
+    <div *ngIf="wineOffers && wineOffers.length > 0">
+      <div class="row justify-content-center">
+        <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+      </div>
+
+      <div class="row justify-content-center">
+        <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage"
+          [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+      </div>
     </div>
+  </div>
 </div>
+
+<div class="row">
+  <div class="col-md-12 text-center py-5">
+    <div class="text-center">
+      <h4 jhiTranslate="home.also.in.the.cellar">También en bodega</h4>
+      <b>
+        <h1 jhiTranslate="home.other.products">OTROS PRODUCTOS</h1>
+      </b>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 text-center py-1">
+
+    <div class="other-product-wrapper">
+      <div class="other-products-availables">
+        <div class="other-products-availables-inner">
+          <a href="/destilados-licores" title="Destilados y licores">
+            <img class="thumb_listado_venta" src="../../content/images/banner-destilados.jpg"
+              alt="Descubre destilados y licores diferentes">
+            <div class="exp-title">
+              <div class="other-product-items">
+                <div class="brandon16" jhiTranslate="home.discover">Descubre</div>
+                <div class="brandon18" jhiTranslate="home.spirits.spirits">Destilados y licores</div>
+                <div class="brandon16" jhiTranslate="home.different">Diferentes</div>
+              </div>
+            </div>
+          </a>
+    
+        </div>
+      </div>
+      <div class="other-products-availables">
+        <div class="other-products-availables-inner">
+          <a href="/gourmet" title="Gourmet">
+            <img class="thumb_listado_venta" src="../../content/images/banner-gourmet.jpg" alt="Productos gourmet únicos">
+            <div class="exp-title">
+              <div class="other-product-items">
+                <div class="brandon16" jhiTranslate="home.products">Productos</div>
+                <div class="brandon18" jhiTranslate="home.gourmet">Gourmet</div>
+                <div class="brandon16" jhiTranslate="home.unique">únicos</div>
+              </div>
+            </div>
+          </a>
+    
+        </div>
+      </div>
+      <div class="other-products-availables">
+        <div class="other-products-availables-inner">
+          <a href="/accesorios-vino" title="Accesorios">
+            <img class="thumb_listado_venta" src="../../content/images/banner-accesorios.jpg"
+              alt="Los mejores accesorios para vino">
+            <div class="exp-title">
+              <div class="other-product-items">
+                <div class="brandon16" jhiTranslate="home.the.best">Los mejores</div>
+                <div class="brandon18" jhiTranslate="home.accessories">Accesorios</div>
+                <div class="brandon16" jhiTranslate="home.for.wine">para vino</div>
+              </div>
+            </div>
+          </a>
+    
+        </div>
+      </div>
+      <div class="other-products-availables">
+        <div class="other-products-availables-inner">
+          <a href="/regalar" title="Para regalar">
+            <img class="thumb_listado_venta" src="../../content/images/banner-regalar2.jpg"
+              alt="Ideas para regalar y acertar">
+            <div class="exp-title">
+              <div class="other-product-items">
+                <div class="brandon16" jhiTranslate="home.ideas">Ideas</div>
+                <div class="brandon18" jhiTranslate="home.gift.and.hit.ideas">Para regalar</div>
+                <div class="brandon16" jhiTranslate="home.and.hit">y acertar</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

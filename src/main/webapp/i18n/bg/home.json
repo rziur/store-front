@@ -1,7 +1,25 @@
 {
   "home": {
-    "title": "Добре дошли в магазина за вино!",
-    "subtitle": "Това е вашата начална страница",
+    "title": "НАЙ-ПРОДАДЕНО",
+    "subtitle": "Първите 50 вина от нашите най-добри продажби",
+    "also.in.the.cellar": "Също в избата",
+    "other.products": "ДРУГИ ПРОДУКТИ",
+    "spirits.spirits": "Духове и спиртни напитки",
+    "discover.different.spirits.and.spirits": "Открийте различни духове и спиртни напитки",
+    "discover": "Discover",
+    "different": "Различен",
+    "unique.gourmet.products": "Уникални гурме продукти",
+    "products": "продукти",
+    "gourmet": "гастроном",
+    "unique": "уникален",
+    "accessories": "аксесоари",
+    "the.best.wine.accessories": "Най-добрите аксесоари за вино",
+    "the.best": "Най-доброто",
+    "for.wine": "за вино",
+    "to.give.away": "Да раздавам",
+    "gift.and.hit.ideas": "Подаръци и хитови идеи",
+    "ideas": "Идеи",
+    "and.hit": "и удари",
     "logged": {
       "message": "Влезли сте като потребител \"{{username}}\"."
     },

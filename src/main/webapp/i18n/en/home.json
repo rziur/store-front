@@ -1,7 +1,27 @@
 {
   "home": {
-    "title": "Welcome, Wine Store!",
-    "subtitle": "This is your homepage",
+    "title": "MOST SOLD",
+    "subtitle": "The first 50 wines of our Top Sales",
+
+    "also.in.the.cellar": "Also in the cellar",
+    "other.products": "OTHER PRODUCTS",
+    "spirits.spirits": "Spirits and spirits",
+    "discover.different.spirits.and.spirits": "Discover different spirits and spirits",
+    "discover": "Discover",
+    "different": "Different",
+    "unique.gourmet.products": "Unique gourmet products",
+    "products": "Products",
+    "gourmet": "Gourmet",
+    "unique": "Unique",
+    "accessories": "Accessories",
+    "the.best.wine.accessories": "The best wine accessories",
+    "the.best": "The best",
+    "for.wine": "for wine",
+    "to.give.away": "To give away",
+    "gift.and.hit.ideas": "Gift and hit ideas",
+    "ideas": "Ideas",
+    "and.hit": "and hit",
+
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },

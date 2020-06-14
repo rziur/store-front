@@ -1,7 +1,26 @@
 {
   "home": {
-    "title": "¡Bienvenido, a la Tienda de Vinos!",
-    "subtitle": "Esta es su página de inicio",
+    "title": "MÁS VENDIDOS",
+    "subtitle": "Los 50 primeros vinos de nuestro Top Ventas",
+    "also.in.the.cellar": "También en bodega",
+    "other.products": "OTROS PRODUCTOS",
+    "spirits.spirits": "Destilados y licores",
+    "discover.different.spirits.and.spirits": "Descubre destilados y licores diferentes",
+    "discover": "Descubre",
+    "different": "Diferentes",
+    "unique.gourmet.products": "Productos gourmet únicos",
+    "products": "Productos",
+    "gourmet": "Gourmet",
+    "unique": "únicos",
+    "accessories": "Accesorios",
+    "the.best.wine.accessories": "Los mejores accesorios para vino",
+    "the.best": "Los mejores",
+    "for.wine": "para vino",
+    "to.give.away": "Para regalar",
+    "gift.and.hit.ideas": "Ideas para regalar y acertar",
+    "ideas": "Ideas",
+    "and.hit": "y acertar",
+
     "logged": {
       "message": "Está conectado como \"{{username}}\"."
     },
