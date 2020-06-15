@@ -40,7 +40,7 @@ export class WineSaleComponent implements OnInit, OnDestroy {
       .query({
         page: pageToLoad - 1,
         size: this.itemsPerPage,
-        sort: this.sort(),
+        sort: this.sort()
       })
       .subscribe(
         (res: HttpResponse<IWineSale[]>) => this.onSuccess(res.body, res.headers, pageToLoad, !dontNavigate),

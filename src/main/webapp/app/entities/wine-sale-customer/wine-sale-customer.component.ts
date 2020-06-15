@@ -5,18 +5,17 @@ import { Subscription, combineLatest } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IWineCustomer } from 'app/shared/model/wine-customer.model';
+import { IWineSale } from 'app/shared/model/wine-sale.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
-import { WineCustomerService } from './wine-customer.service';
-import { WineCustomerDeleteDialogComponent } from './wine-customer-delete-dialog.component';
+import { WineSaleCustomerService } from './wine-sale-customer.service';
 
 @Component({
-  selector: 'jhi-wine-customer',
-  templateUrl: './wine-customer.component.html',
+  selector: 'jhi-wine-customer-sale',
+  templateUrl: './wine-sale-customer.component.html',
 })
-export class WineCustomerComponent implements OnInit, OnDestroy {
-  wineCustomers?: IWineCustomer[];
+export class WineSaleCustomerComponent implements OnInit, OnDestroy {
+  wineSales?: IWineSale[];
   eventSubscriber?: Subscription;
   totalItems = 0;
   itemsPerPage = ITEMS_PER_PAGE;
@@ -26,7 +25,7 @@ export class WineCustomerComponent implements OnInit, OnDestroy {
   ngbPaginationPage = 1;
 
   constructor(
-    protected wineCustomerService: WineCustomerService,
+    protected wineSaleService: WineSaleCustomerService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
@@ -36,21 +35,21 @@ export class WineCustomerComponent implements OnInit, OnDestroy {
   loadPage(page?: number, dontNavigate?: boolean): void {
     const pageToLoad: number = page || this.page || 1;
 
-    this.wineCustomerService
+    this.wineSaleService
       .query({
         page: pageToLoad - 1,
         size: this.itemsPerPage,
         sort: this.sort()
       })
       .subscribe(
-        (res: HttpResponse<IWineCustomer[]>) => this.onSuccess(res.body, res.headers, pageToLoad, !dontNavigate),
+        (res: HttpResponse<IWineSale[]>) => this.onSuccess(res.body, res.headers, pageToLoad, !dontNavigate),
         () => this.onError()
       );
   }
 
   ngOnInit(): void {
     this.handleNavigation();
-    this.registerChangeInWineCustomers();
+    this.registerChangeInWineSales();
   }
 
   protected handleNavigation(): void {
@@ -74,22 +73,13 @@ export class WineCustomerComponent implements OnInit, OnDestroy {
     }
   }
 
-  trackId(index: number, item: IWineCustomer): number {
+  trackId(index: number, item: IWineSale): number {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     return item.id!;
   }
 
-  setActive(user: IWineCustomer, isActivated: boolean): void {
-    this.wineCustomerService.update({ ...user, activated: isActivated }).subscribe(() => this.loadPage());
-  }
-
-  registerChangeInWineCustomers(): void {
-    this.eventSubscriber = this.eventManager.subscribe('wineCustomerListModification', () => this.loadPage());
-  }
-
-  delete(wineCustomer: IWineCustomer): void {
-    const modalRef = this.modalService.open(WineCustomerDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.wineCustomer = wineCustomer;
+  registerChangeInWineSales(): void {
+    this.eventSubscriber = this.eventManager.subscribe('wineSaleListModification', () => this.loadPage());
   }
 
   sort(): string[] {
@@ -100,11 +90,11 @@ export class WineCustomerComponent implements OnInit, OnDestroy {
     return result;
   }
 
-  protected onSuccess(data: IWineCustomer[] | null, headers: HttpHeaders, page: number, navigate: boolean): void {
+  protected onSuccess(data: IWineSale[] | null, headers: HttpHeaders, page: number, navigate: boolean): void {
     this.totalItems = Number(headers.get('X-Total-Count'));
     this.page = page;
     if (navigate) {
-      this.router.navigate(['/wine-customer'], {
+      this.router.navigate(['/wine-sale'], {
         queryParams: {
           page: this.page,
           size: this.itemsPerPage,
@@ -112,7 +102,7 @@ export class WineCustomerComponent implements OnInit, OnDestroy {
         },
       });
     }
-    this.wineCustomers = data || [];
+    this.wineSales = data || [];
     this.ngbPaginationPage = this.page;
   }
 

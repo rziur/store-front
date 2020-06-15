@@ -25,6 +25,10 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./wine-sale/wine-sale.module').then(m => m.StoreWineSaleModule),
       },
       {
+        path: 'wine-sale/customer',
+        loadChildren: () => import('./wine-sale-customer/wine-sale-customer.module').then(m => m.StoreWineSaleCustomerModule),
+      },
+      {
         path: 'wine-customer',
         loadChildren: () => import('./wine-customer/wine-customer.module').then(m => m.StoreWineCustomerModule),
       },

@@ -4,6 +4,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
 import { LoginService } from 'app/core/login/login.service';
+import { AccountService } from 'app/core/auth/account.service';
+import { Authority } from '../constants/authority.constants';
 
 @Component({
   selector: 'jhi-login-modal',
@@ -21,7 +23,7 @@ export class LoginModalComponent implements AfterViewInit {
     rememberMe: [false],
   });
 
-  constructor(private loginService: LoginService, private router: Router, public activeModal: NgbActiveModal, private fb: FormBuilder) {}
+  constructor(private loginService: LoginService, private accountService: AccountService, private router: Router, public activeModal: NgbActiveModal, private fb: FormBuilder) {}
 
   ngAfterViewInit(): void {
     if (this.username) {
@@ -51,10 +53,17 @@ export class LoginModalComponent implements AfterViewInit {
           this.activeModal.close();
           if (
             this.router.url === '/account/register' ||
+            this.router.url === '/account/register-customer' ||
             this.router.url.startsWith('/account/activate') ||
             this.router.url.startsWith('/account/reset/')
           ) {
             this.router.navigate(['']);
+          }
+
+          if(this.accountService.hasAnyAuthority(Authority.ADMIN)) {
+            this.router.navigate(['admin/metrics']);
+          } else {
+            this.router.navigate(['wine-sale/customer']);
           }
         },
         () => (this.authenticationError = true)
@@ -63,7 +72,7 @@ export class LoginModalComponent implements AfterViewInit {
 
   register(): void {
     this.activeModal.dismiss('to state register');
-    this.router.navigate(['/account/register']);
+    this.router.navigate(['/account/register-customer']);
   }
 
   requestResetPassword(): void {

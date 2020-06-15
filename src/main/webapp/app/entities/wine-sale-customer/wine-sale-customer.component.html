@@ -1,0 +1,48 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="storeApp.wineSale.home.title">Wine Sales</span>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="wineSales?.length === 0">
+        <span jhiTranslate="storeApp.wineSale.home.notFound">No wineSales found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="wineSales && wineSales.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="shippingDescription"><span jhiTranslate="storeApp.wineSale.shippingDescription">Shipping Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="shippingAmount"><span jhiTranslate="storeApp.wineSale.shippingAmount">Shipping Amount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="discount"><span jhiTranslate="storeApp.wineSale.discount">Discount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="total"><span jhiTranslate="storeApp.wineSale.total">Total</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="state"><span jhiTranslate="storeApp.wineSale.state">State</span> <fa-icon icon="sort"></fa-icon></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let wineSale of wineSales ;trackBy: trackId">
+                    <td><a [routerLink]="['/wine-sale', wineSale.id, 'view']">{{ wineSale.id }}</a></td>
+                    <td>{{ wineSale.shippingDescription }}</td>
+                    <td>{{ wineSale.shippingAmount }}</td>
+                    <td>{{ wineSale.discount }}</td>
+                    <td>{{ wineSale.total }}</td>
+                    <td>{{ wineSale.state }}</td>
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="wineSales && wineSales.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>
