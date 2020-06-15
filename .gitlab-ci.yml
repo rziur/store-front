@@ -1,0 +1,48 @@
+image: jhipster/jhipster:v6.9.1
+
+cache:
+    paths:
+        - node_modules/
+stages:
+    - build
+    - test
+    - analyze
+    - packaging
+webpack-build:
+    stage: build
+    script:
+        - yarn install
+        - yarn run webpack:build
+    artifacts:
+        paths:
+            - build/
+webpack-test:
+    stage: test
+    dependencies:
+        - webpack-build
+    script:
+        - yarn run webpack:test
+    artifacts:
+        reports:
+            junit: build/test-results/TESTS-results-jest.xml
+        paths:
+            - build/test-results
+        expire_in: 1 day
+sonar-analyze:
+    stage: analyze
+    dependencies:
+        - webpack-test
+    script:
+        - npm run sonar
+    artifacts:
+        paths:
+        - build/
+        - build/test-results
+webpack-prod:
+    stage: packaging
+    script:
+        - yarn run webpack:prod
+        # - add cmd to zip the app folder build/resources/main/static
+    artifacts:
+        paths:
+            - build/

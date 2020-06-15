@@ -1,6 +1,50 @@
-# store
+# Wine store frontend
 
-This application was generated using JHipster 6.9.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.9.1](https://www.jhipster.tech/documentation-archive/v6.9.1).
+The Wine store application is divided into two parts:
+- Frontend or "frontal part", which is the public website accessed by users who want to consult and buy the offers.
+- Backend or "administration part", which can only be accessed by site administrators and where they can create, consult or modify any information about offers, purchases, stores and users.
+
+The site has the following pages:
+- Public page where the best-selling offers are shown
+- Registration page
+- Login page
+- Adjustment page to consult and modify the data of a user
+- Password page
+- Pages to create, consult, modify and delete business information
+- Administration page (User management, Metrics, Health, Audits, Logs, Api)
+- Dashboard page (to check the orders)
+
+The database:
+- wine_store_address: stores the basic location information of a store
+- wine_store: stores the data of the establishments that publish the offers
+- wine_stock: stores all the wine, offer, purchase, sale and inventory information
+- wine_offer: stores the basic information of each offer
+- wine_sale: stores the basic information of each sale produced
+- wine_customer: stores the profile of registered clients of the site
+
+If you want to sign in, you can try the default accounts:
+- Administrator (login="admin" and password="admin")
+- User (login="anne" and password="user").
+
+**Wine store API**. 
+ 
+   - [x] Jhipster
+   - [x] Monolithic application
+   - [x] Separating the front-end and the API server
+   - [x] Using Angular + TypeScript
+   - [x] Bootstrap 4 
+   - [x] Data binding, form validation
+   - [x] Spring Boot (MAVEN, SPRING, SPRING MVC REST, SPRING DATA JPA)
+   - [x] JSON Web Token (JWT) 
+   - [x] MariaDB
+   - [x] Liquibase
+   - [x] i18n
+   - [x] Automated tasks with maven
+   - [x] CD and CI environments in Docker
+   - [x] Test
+   - [x] Deploy with Docker
+
+This application was generated using JHipster 6.9.1.
 
 ## Development
 
